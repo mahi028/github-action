@@ -3,7 +3,7 @@ name: Daily Commit
 on:
   schedule:
     - cron: "30 2 * * *"  # Runs daily at 02:30 UTC
-  workflow_dispatch:  # Allows manual trigger
+  workflow_dispatch:
 
 jobs:
   commit:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub Token for authentication
+          token: ${{ secrets.PAT_TOKEN }}  # Use personal access token
 
       - name: Make changes
         run: |
@@ -28,6 +28,4 @@ jobs:
 
       - name: Push changes
         run: |
-          git push origin HEAD:main  # Ensure 'main' matches your default branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub Token
+          git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/MohitKumar020291/github-action.git HEAD:main
