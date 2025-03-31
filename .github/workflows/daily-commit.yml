@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub Token for authentication
 
       - name: Make changes
         run: |
@@ -23,4 +25,9 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "23f1000561@ds.study.iitm.ac.in"
           git commit -m "Automated daily commit - $(date)" || echo "No changes to commit"
-          git push
+
+      - name: Push changes
+        run: |
+          git push origin HEAD:main  # Ensure 'main' matches your default branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub Token
