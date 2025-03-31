@@ -23,9 +23,9 @@ jobs:
       - name: Commit changes (23f1000561@ds.study.iitm.ac.in)
         run: |
           git config --global user.name "GitHub Action"
-          git config --global user.email "23f1000561@ds.study.iitm.ac.in"
+          git config --global user.email "23f1002364@ds.study.iitm.ac.in"
           git commit -m "Automated daily commit - $(date)" || echo "No changes to commit"
 
       - name: Push changes
         run: |
-          git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/MohitKumar020291/github-action.git HEAD:main
+          git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/mahi028/github-action.git HEAD:main
